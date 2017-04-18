@@ -14,14 +14,18 @@ void metersToFeetAndInches(double meters, unsigned int *ftptr, double *inptr) {
     
     unsigned int feet = (unsigned int)floor(rawFeet);
     
+    if (ftptr) {
     printf("Storing %u to the address %p\n", feet, ftptr);
     *ftptr = feet;
+    }
     
     double fractionalFoot = rawFeet - feet;
     double inches = fractionalFoot * 12.0;
     
+    if (inptr) {
     printf("Storing %.2f to the address %p\n", inches, inptr);
     *inptr = inches;
+    }
 }
 
 int main(int argc, const char * argv[]) {
