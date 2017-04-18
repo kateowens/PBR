@@ -7,9 +7,15 @@
 //
 
 #include <stdio.h>
+#include <math.h>
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    double pi = 3.14;
+    double integerPart;
+    double fractionPart;
+    
+    fractionPart = modf(pi, &integerPart);
+    
+    printf("integerPart = %.f, fractionPart = %.2f\n", integerPart, fractionPart);
     return 0;
 }
