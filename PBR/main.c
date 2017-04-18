@@ -9,13 +9,28 @@
 #include <stdio.h>
 #include <math.h>
 
+void metersToFeetAndInches(double meters, unsigned int *ftptr, double *inptr) {
+    double rawFeet = meters * 3.281;
+    
+    unsigned int feet = (unsigned int)floor(rawFeet);
+    
+    printf("Storing %u to the address %p\n", feet, ftptr);
+    *ftptr = feet;
+    
+    double fractionalFoot = rawFeet - feet;
+    double inches = fractionalFoot * 12.0;
+    
+    printf("Storing %.2f to the address %p\n", inches, inptr);
+    *inptr = inches;
+}
+
 int main(int argc, const char * argv[]) {
-    double pi = 3.14;
-    double integerPart;
-    double fractionPart;
+    double meters = 3.0;
+    unsigned int feet;
+    double inches;
     
-    fractionPart = modf(pi, &integerPart);
+    metersToFeetAndInches(meters, &feet, &inches);
+    printf("%.1f meters is equal to %d feet and %.1f inches.", meters, feet, inches);
     
-    printf("integerPart = %.f, fractionPart = %.2f\n", integerPart, fractionPart);
     return 0;
 }
